@@ -6,13 +6,12 @@ async function getData() {
     let res = await fetch("https://fakestoreapi.com/products");
     data = await res.json();
     appendProducts(data);
-    // console.log(data);
+    console.log(data);
   } catch (err) {
     console.log(err);
   }
 }
 getData();
-// Append
 function appendProducts(data) {
   container.innerHTML = null;
   data.forEach(function (ele) {
@@ -29,16 +28,33 @@ function appendProducts(data) {
   });
 }
 function sortLH() {
-  // console.log(data);
-  data = data.sort(function (a, b) {
+  let cpyda = data;
+  cpyda = data.sort(function (a, b) {
     return a.price - b.price;
   });
-  appendProducts(data);
+  appendProducts(cpyda);
 }
 
 function sortHL() {
-  data = data.sort(function (a, b) {
+  let cpyda = data;
+  cpyda.sort(function (a, b) {
     return b.price - a.price;
   });
-  appendProducts(data);
+  appendProducts(cpyda);
+  console.log(data);
+}
+// console.log("data", data);
+function reset() {
+  console.log(data);
+  // appendProducts(data);
+}
+
+function filter() {
+  let copy_data = data;
+  let query = document.getElementById("query").value;
+
+  copy_data = copy_data.filter(function (ele) {
+    return ele.title.toLowerCase().includes(query);
+  });
+  appendProducts(copy_data);
 }

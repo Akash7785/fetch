@@ -17,9 +17,11 @@
     </style>
   </head>
   <body>
-    <h1>Online Store</h1>
+    <h1>Online Stores</h1>
     <button onclick="sortLH()">Sort L-H</button>
+    <button onclick="reset()">Reset</button>
     <button onclick="sortHL()">Sort H-L</button>
+    Filter: <input oninput="filter()" type="text" id="query" />
     <div id="container"></div>
   </body>
 </html>
